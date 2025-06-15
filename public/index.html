@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jalandra Construction</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+  <div class="page1">
+    <nav class="navbar">
+      <div class="navbar-container container">
+        <input type="checkbox" id="menu-toggle"/>
+        <div class="hamburger-lines" for="menu-toggle">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
+        <ul class="menu-items">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Material</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="./upload">photo Upload</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">9216159406</a></li>
+        </ul>
+        <h1 class="logo">Jalandra Construction</h1>
+      </div>
+    </nav>
+
+    <div class="pageDiv">
+      <div class="imgContainer"></div>
+      <div class="listContainer">
+        <h1 class="listName">Hemant's List Box</h1>
+        <input id="userInput" type="text" placeholder="Enter a message"/>
+        <button class="inputButton" onclick="chat()">Send</button>
+        <ol id="botReply"></ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="Store/items.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

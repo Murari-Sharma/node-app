@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload Successful</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Upload Successful!</h2>
+    <p><strong>Name:</strong> <%= name %></p>
+    <p><strong>Photo:</strong></p>
+    <img src="/uploads/<%= photo %>" alt="Uploaded Image" style="max-width: 300px; border: 1px solid #ccc;" />
+    <br><br>
+    <a href="/upload"><button>Upload Another</button></a>
+  </div>
+</body>
+</html>
