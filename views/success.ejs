@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Upload Successful</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="form-container">
-    <h2>Upload Successful!</h2>
+  <%- include('partials/navbar', { page: 'upload' }) %>
+  <main class="form-container" style="text-align:center;">
+    <h2 style="color:#16a34a;">Upload Successful!</h2>
     <p><strong>Name:</strong> <%= name %></p>
     <p><strong>Photo:</strong></p>
-    <img src="/uploads/<%= photo %>" alt="Uploaded Image" style="max-width: 300px; border: 1px solid #ccc;" />
+    <img src="/uploads/<%= photo %>" alt="Uploaded Image" style="max-width: 300px; border: 2px solid #16a34a; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.08);" />
     <br><br>
-    <a href="/upload"><button>Upload Another</button></a>
-  </div>
+    <a href="/upload"><button class="inputButton">Upload Another</button></a>
+    <a href="/" style="margin-left:10px;"><button class="inputButton" style="background:#0ea5e9;">Go to Gallery</button></a>
+  </main>
 </body>
 </html>

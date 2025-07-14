@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="navbar-container container">
+    <input type="checkbox" id="menu-toggle" style="display:none;" onchange="document.querySelector('.menu-items').classList.toggle('show', this.checked)">
+    <label class="hamburger-lines" for="menu-toggle" aria-label="Toggle navigation menu">
+      <span class="line line1"></span>
+      <span class="line line2"></span>
+      <span class="line line3"></span>
+    </label>
+    <ul class="menu-items">
+      <li class="<%= page === 'home' ? 'active' : '' %>"><a href="/" aria-current="<%= page === 'home' ? 'page' : undefined %>">Home</a></li>
+      <li class="<%= page === 'material' ? 'active' : '' %>"><a href="/material" aria-current="<%= page === 'material' ? 'page' : undefined %>">Material</a></li>
+      <li class="<%= page === 'contact' ? 'active' : '' %>"><a href="/contact" aria-current="<%= page === 'contact' ? 'page' : undefined %>">Contact</a></li>
+      <li class="<%= page === 'about' ? 'active' : '' %>"><a href="/about" aria-current="<%= page === 'about' ? 'page' : undefined %>">About us</a></li>
+      <li class="<%= page === 'help' ? 'active' : '' %>"><a href="/help" aria-current="<%= page === 'help' ? 'page' : undefined %>">Help</a></li>
+      <li class="<%= page === 'phone' ? 'active' : '' %>"><a href="/phone" aria-current="<%= page === 'phone' ? 'page' : undefined %>">9216159406</a></li>
+      <li class="dark-toggle-li"><button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button></li>
+    </ul>
+    <h1 class="logo">Jalandra Construction</h1>
+  </div>
+</nav>

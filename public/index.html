@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jalandra Construction</title>
+  <title>Jalandra Construction Gallery</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
@@ -11,37 +11,41 @@
   <div class="page1">
     <nav class="navbar">
       <div class="navbar-container container">
-        <input type="checkbox" id="menu-toggle"/>
-        <div class="hamburger-lines" for="menu-toggle">
+        <input type="checkbox" id="menu-toggle" style="display:none;"/>
+        <label class="hamburger-lines" for="menu-toggle" aria-label="Toggle navigation menu">
           <span class="line line1"></span>
           <span class="line line2"></span>
           <span class="line line3"></span>
-        </div>
+        </label>
         <ul class="menu-items">
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Material</a></li>
           <li><a href="#">Contact</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="./upload">photo Upload</a></li>
+          <li><a href="/about">About us</a></li>
           <li><a href="#">Help</a></li>
           <li><a href="#">9216159406</a></li>
+          <li class="dark-toggle-li"><button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button></li>
         </ul>
         <h1 class="logo">Jalandra Construction</h1>
       </div>
     </nav>
 
     <div class="pageDiv">
-      <div class="imgContainer"></div>
+      <div class="gallery-controls">
+        <input type="text" id="searchInput" placeholder="Search images by name..." aria-label="Search images">
+        <span id="gallery-status" aria-live="polite"></span>
+      </div>
+      <div class="imgContainer" aria-live="polite"></div>
       <div class="listContainer">
-        <h1 class="listName">Hemant's List Box</h1>
-        <input id="userInput" type="text" placeholder="Enter a message"/>
+        <h1 class="listName">Chat Box</h1>
+        <input id="userInput" type="text" placeholder="Enter a message" onkeydown="if(event.key==='Enter'){chat();}"/>
         <button class="inputButton" onclick="chat()">Send</button>
         <ol id="botReply"></ol>
       </div>
     </div>
   </div>
 
-  <script src="Store/items.js"></script>
+  <!-- <script src="Store/items.js"></script> -->
   <script src="script.js"></script>
 </body>
 </html>

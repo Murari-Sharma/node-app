@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Jalandra Construction</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .about-section {
+      max-width: 800px;
+      margin: 36px auto 60px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      padding: 36px 32px;
+      color: #1e293b;
+      font-size: 1.13rem;
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+      transition: background 0.2s;
+    }
+    .about-title {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 18px;
+    }
+    .about-highlight {
+      color: #0ea5e9;
+      font-weight: 600;
+    }
+    .about-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 18px;
+      justify-content: center;
+    }
+    .about-value-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.07);
+      padding: 18px 22px;
+      min-width: 180px;
+      max-width: 260px;
+      text-align: center;
+      font-size: 1.06rem;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .about-img {
+      display: block;
+      margin: 0 auto 18px auto;
+      border-radius: 16px;
+      max-width: 110px;
+      box-shadow: 0 2px 8px rgba(14,165,233,0.13);
+    }
+    @media (max-width: 700px) {
+      .about-section { padding: 18px 4vw; font-size: 1rem; }
+      .about-title { font-size: 1.3rem; }
+      .about-values { flex-direction: column; align-items: center; gap: 10px; }
+      .about-value-card { min-width: 120px; padding: 12px 10px; font-size: 0.98rem; }
+    }
+    body.dark-mode .about-section { background: #23272f; color: #f1f5f9; }
+    body.dark-mode .about-value-card { background: #18181b; color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <%- include('partials/navbar', { page: 'about', hidePhotoUpload: true }) %>
+  <div class="about-section">
+    <img src="/uploads/about-building.jpg" alt="Jalandra Construction" class="about-img" onerror="this.style.display='none'"/>
+    <div class="about-title">About Jalandra Construction</div>
+    <p>
+      <span class="about-highlight">Jalandra Construction</span> is a trusted name in building excellence, known for delivering quality projects and innovative solutions in the construction industry. Our journey is built on a foundation of <span class="about-highlight">integrity</span>, <span class="about-highlight">craftsmanship</span>, and a commitment to our clients' dreams.
+    </p>
+    <div class="about-values">
+      <div class="about-value-card">Experienced Team</div>
+      <div class="about-value-card">On-Time Delivery</div>
+      <div class="about-value-card">Modern Designs</div>
+      <div class="about-value-card">Customer Satisfaction</div>
+      <div class="about-value-card">Transparent Process</div>
+    </div>
+    <p style="margin-top:22px;">
+      From residential homes to commercial spaces, we handle every project with care and professionalism. We believe in using the best materials, the latest technology, and a collaborative approach to turn your vision into reality.
+    </p>
+    <p style="margin-top:14px;">
+      <span class="about-highlight">Contact us</span> today to discuss your next project and experience the Jalandra Construction difference.
+    </p>
+  </div>
+</body>
+</html>

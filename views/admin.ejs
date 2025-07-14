@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Photo Manager</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .admin-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 32px 26px;
+      box-sizing: border-box;
+    }
+    .admin-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 32px;
+    }
+    .admin-upload-form {
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      align-items: flex-end;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .admin-upload-form input[type="text"] {
+      width: 220px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1.2px solid #ccc;
+      font-size: 1rem;
+    }
+    .admin-upload-form input[type="file"] {
+      font-size: 1rem;
+    }
+    .admin-upload-form button {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 30px;
+      font-size: 1.09rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .admin-upload-form button:hover {
+      background: #1d4ed8;
+    }
+    .admin-gallery {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 16px;
+      justify-items: center;
+    }
+    .admin-imgBox {
+      width: 120px;
+      margin: 0;
+      background: #f8fafc;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      border: 1px solid #e5e7eb;
+      text-align: center;
+      padding: 8px 0 12px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .admin-imgBox img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #e0e7ef;
+    }
+    .admin-imgName {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin: 8px 0 4px 0;
+      color: #222;
+      word-break: break-word;
+    }
+    .admin-actions {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .admin-btn {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 0.93rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-bottom: 2px;
+    }
+    .admin-btn.delete { background: #fee2e2; color: #b91c1c; }
+    .admin-btn.delete:hover { background: #ef4444; color: #fff; }
+    .admin-btn.update { background: #dbeafe; color: #2563eb; }
+    .admin-btn.update:hover { background: #2563eb; color: #fff; }
+    .admin-btn.copy { background: #f3f4f6; color: #374151; }
+    .admin-btn.copy:hover { background: #a7f3d0; color: #047857; }
+    .admin-status { text-align: center; color: #16a34a; font-size: 1.02rem; margin-bottom: 10px; min-height: 22px; }
+    .admin-stats-panel {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .floating-whatsapp:hover {
+      background: #1d4ed8;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 60px;
+      background: #2563eb;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .back-to-top:hover {
+      background: #1d4ed8;
+    }
+    .admin-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+    .admin-modal-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+    .admin-modal-close:hover,
+    .admin-modal-close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .admin-container { padding: 6vw 2vw; }
+      .admin-upload-form { flex-direction: column; align-items: stretch; gap: 10px; }
+      .admin-upload-form input[type="text"] { width: 100%; }
+      .admin-upload-form button { width: 100%; }
+      .admin-gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+      .admin-imgBox { width: 100px; padding: 6px 0 10px 0; }
+      .admin-imgBox img { width: 80px; height: 80px; border-radius: 8px; }
+    }
+    @media (max-width: 600px) {
+      .admin-container { padding: 3vw 1vw; }
+      .admin-title { font-size: 1.3rem; }
+      .admin-gallery { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+      .admin-imgBox { width: 90px; padding: 4px 0 8px 0; }
+      .admin-imgBox img { width: 60px; height: 60px; border-radius: 7px; }
+      .admin-imgName { font-size: 0.85rem; }
+      .admin-btn { font-size: 0.82rem; padding: 4px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <%- include('partials/navbar', { page: 'admin', hideUploadButton: true }) %>
+  <div class="admin-container">
+    <div class="admin-title">Admin Photo Manager</div>
+    <form id="adminUploadForm" class="admin-upload-form" enctype="multipart/form-data" method="POST" action="/uploaded">
+      <input type="text" name="name" placeholder="Photo name" required />
+      <input type="file" name="photo" accept="image/*" required />
+      <button type="submit">Upload</button>
+    </form>
+    <div id="adminStatus" style="text-align:center;color:#2563eb;font-weight:600;margin-bottom:18px;"></div>
+    <!-- Stats Panel -->
+    <div class="admin-stats-panel" style="display:flex;gap:24px;justify-content:center;align-items:center;margin-bottom:18px;">
+      <div><i class="fas fa-images"></i> Total Photos: <span id="adminTotalPhotos">0</span></div>
+      <div><i class="fas fa-clock"></i> Recent Uploads: <span id="adminRecentUploads">0</span></div>
+    </div>
+    <!-- Bulk Actions -->
+    <div style="text-align:right;margin-bottom:10px;">
+      <button id="adminBulkDelete" style="display:none;background:#ef4444;color:#fff;padding:6px 18px;border:none;border-radius:8px;cursor:pointer;font-weight:600;"><i class="fas fa-trash"></i> Bulk Delete</button>
+      <button id="adminBulkCopy" style="display:none;background:#2563eb;color:#fff;padding:6px 18px;border:none;border-radius:8px;cursor:pointer;font-weight:600;"><i class="fas fa-copy"></i> Bulk Copy URLs</button>
+    </div>
+    <div class="admin-gallery" id="adminGallery"></div>
+  </div>
+  <!-- Floating WhatsApp/contact button -->
+  <a href="https://wa.me/919216159406" class="floating-whatsapp" target="_blank" aria-label="Contact on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <!-- Back to Top button -->
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
+  <!-- Modal Preview -->
+  <div id="adminPreviewModal" class="admin-modal" style="display:none;">
+    <span class="admin-modal-close" onclick="document.getElementById('adminPreviewModal').style.display='none';">&times;</span>
+    <img id="adminModalImg" src="" alt="Preview" style="max-width:98vw;max-height:90vh;display:block;margin:auto;"/>
+    <div id="adminModalCaption" style="text-align:center;color:#222;margin-top:8px;"></div>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <script src="/admin.js"></script>
+</body>
